@@ -1,0 +1,20 @@
+{
+  "name": "psr7-js",
+  "license": "MIT",
+  "author": "Beno!t POLASZEK",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "webpack --mode=production"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@symfony/webpack-encore": "^0.27.0",
+    "webpack": "^4.37.0"
+  },
+  "dependencies": {
+    "deepmerge": "^4.0.0"
+  },
+  "main": "./dist/module.js"
+}
