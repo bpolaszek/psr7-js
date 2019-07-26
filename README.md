@@ -15,7 +15,7 @@ But what if you come to front-end development? You can use native `URL` objects,
 So, this library is intended to expose the same methods as PSR-7, in an immutable way:
 
 ```javascript
-import URI from 'psr7-js';
+import {URI} from 'psr7-js';
 
 let uri = new URI('/foo'); // Relative URLs are supported - Defaults to window.location.href
 uri = uri.withQuery('foo=bar');
