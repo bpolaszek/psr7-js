@@ -1,5 +1,6 @@
 {
   "name": "psr7-js",
+  "version": "0.1.1",
   "license": "MIT",
   "author": "Beno!t POLASZEK",
   "description": "URI and Query String immutable manipulation, support for bracket syntax.",
@@ -9,10 +10,12 @@
     "query string",
     "search",
     "query",
-    "brackets"
+    "brackets",
+    "psr7",
+    "psr-7",
+    "php"
   ],
   "repository": "https://github.com/bpolaszek/psr7-js.git",
-  "version": "0.1.0",
   "scripts": {
     "test": "jest",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
