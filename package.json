@@ -2,6 +2,16 @@
   "name": "psr7-js",
   "license": "MIT",
   "author": "Beno!t POLASZEK",
+  "description": "URI and Query String immutable manipulation, support for bracket syntax.",
+  "keywords": [
+    "uri",
+    "url",
+    "query string",
+    "search",
+    "query",
+    "brackets"
+  ],
+  "repository": "https://github.com/bpolaszek/psr7-js.git",
   "version": "0.1.0",
   "scripts": {
     "build": "webpack --mode=production"
