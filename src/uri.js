@@ -1,41 +1,15 @@
 import is_scalar from './is-scalar';
+
 const placeholder = 'http://localhost';
-
-function current_location() {
-    return (undefined !== window) ? window.location.href : '/';
-}
-
-function stringify(value) {
-    if (null === value || undefined === value) {
-        return '';
-    }
-
-    if ('object' === typeof value && 'function' === typeof value.toString) {
-        return value.toString();
-    }
-
-    if (!is_scalar(value)) {
-        throw TypeError('Unexpected value');
-    }
-
-    return value;
-}
-
-function nullify(value) {
-    if (null === value || undefined === value) {
-        return null;
-    }
-
-    if (!is_scalar(value)) {
-        throw TypeError('Unexpected value');
-    }
-
-    return 0 === value.length ? null : value;
-}
 
 class URI {
 
     constructor(url = current_location()) {
+
+        if (!(url instanceof URL) && !is_scalar(url)) {
+            throw TypeError('Expected string, got ' + typeof url);
+        }
+
         try {
             this.url = new URL(url);
             this.absolute = true;
@@ -72,10 +46,18 @@ class URI {
     }
 
     getHost() {
+        if (!this.absolute) {
+            return '';
+        }
+
         return this.url.hostname;
     }
 
     getPort() {
+        if (!this.absolute) {
+            return null;
+        }
+
         if (0 === this.url.port.length) {
             return null;
         }
@@ -134,7 +116,8 @@ class URI {
 
     withPath(path) {
         let clone = new URI(this.url.toString());
-        clone.url.path = stringify(path);
+        clone.url.pathname = stringify(path);
+        clone.absolute = this.absolute;
 
         return clone;
     }
@@ -142,16 +125,38 @@ class URI {
     withQuery(query) {
         let clone = new URI(this.url.toString());
         clone.url.search = stringify(query);
+        clone.absolute = this.absolute;
 
         return clone;
     }
 
-    withfFragment(fragment) {
+    withFragment(fragment) {
         let clone = new URI(this.url.toString());
         clone.url.hash = stringify(fragment);
+        clone.absolute = this.absolute;
 
         return clone;
     }
+}
+
+function current_location() {
+    return (undefined !== window) ? window.location.href : '/';
+}
+
+function stringify(value) {
+    if (null === value || undefined === value) {
+        return '';
+    }
+
+    if ('object' === typeof value && 'function' === typeof value.toString) {
+        return value.toString();
+    }
+
+    if (!is_scalar(value)) {
+        throw TypeError('Unexpected value');
+    }
+
+    return value;
 }
 
 export default URI;

@@ -1,4 +1,8 @@
 /.idea
+/bin
+/coverage
 /node_modules
 index.html
+package-lock.json
 yarn.lock
+yarn-error.log

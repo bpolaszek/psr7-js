@@ -1,4 +1,4 @@
-export default (key) => {
+export default function extract_path(key) {
     if (-1 === key.indexOf('[')) {
         return [key];
     }

@@ -2,6 +2,10 @@ import is_scalar from './is-scalar';
 
 export default (value) => {
 
+    if (null === value) {
+        return null;
+    }
+
     if (false === isNaN(value)) {
         return Number.isInteger(value) ? parseInt(value) : parseFloat(value);
     }

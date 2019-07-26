@@ -1,3 +1,9 @@
+[![Latest Stable Version](https://poser.pugx.org/bentools/psr7-js/v/stable)](https://www.npmjs.com/package/psr7-js)
+[![License](https://poser.pugx.org/bentools/psr7-js/license)](https://www.npmjs.com/package/psr7-js)
+[![Build Status](https://img.shields.io/travis/bpolaszek/psr7-js/master.svg?style=flat-square)](https://travis-ci.org/bpolaszek/psr7-js)
+[![Coverage Status](https://coveralls.io/repos/github/bpolaszek/psr7-js/badge.svg?branch=master)](https://coveralls.io/github/bpolaszek/psr7-js?branch=master)
+[![Total Downloads](https://poser.pugx.org/bentools/psr7-js/downloads)](https://www.npmjs.com/package/psr7-js)
+
 # PSR7-JS
 
 ## URI
@@ -58,6 +64,12 @@ Inspired by [bentools/querystring](https://github.com/bpolaszek/querystring).
 This library is intended to be used with a bundler like Webpack. 
 
 If you prefer, you can still have `URI` and `QueryString` registered in your global scope (which is not adviced) by using `dist/uri.min.js` and `dist/query-string.min.js` into `<script>` tags.
+
+## Tests
+
+```bash
+yarn test // or npm run-script test
+```
 
 ## License
 
