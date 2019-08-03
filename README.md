@@ -1,8 +1,8 @@
-[![Latest Stable Version](https://poser.pugx.org/bentools/psr7-js/v/stable)](https://www.npmjs.com/package/psr7-js)
-[![License](https://poser.pugx.org/bentools/psr7-js/license)](https://www.npmjs.com/package/psr7-js)
+[![Latest Stable Version](https://img.shields.io/npm/v/psr7-js?style=flat-square)](https://www.npmjs.com/package/psr7-js)
+[![License](https://img.shields.io/npm/l/psr7-js?style=flat-square)](https://www.npmjs.com/package/psr7-js)
 [![Build Status](https://img.shields.io/travis/bpolaszek/psr7-js/master.svg?style=flat-square)](https://travis-ci.org/bpolaszek/psr7-js)
-[![Coverage Status](https://coveralls.io/repos/github/bpolaszek/psr7-js/badge.svg?branch=master)](https://coveralls.io/github/bpolaszek/psr7-js?branch=master)
-[![Total Downloads](https://poser.pugx.org/bentools/psr7-js/downloads)](https://www.npmjs.com/package/psr7-js)
+[![Coverage Status](https://img.shields.io/coveralls/github/bpolaszek/psr7-js?style=flat-square)](https://coveralls.io/github/bpolaszek/psr7-js?branch=master)
+[![Total Downloads](https://img.shields.io/npm/dt/psr7-js?style=flat-square)](https://www.npmjs.com/package/psr7-js)
 
 # PSR7-JS
 
