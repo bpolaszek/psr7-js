@@ -11,7 +11,7 @@ export default function create_object(path, value) {
         previous = path[i - 1];
         next = path[i + 1];
 
-        if (undefined === next) {
+        if ('undefined' === typeof next) {
             if (Array.isArray(cursor)) {
                 cursor.push(value);
                 break;
