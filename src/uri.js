@@ -140,11 +140,11 @@ class URI {
 }
 
 function current_location() {
-    return (undefined !== window) ? window.location.href : '/';
+    return ('undefined' !== typeof window) ? window.location.href : '/';
 }
 
 function stringify(value) {
-    if (null === value || undefined === value) {
+    if (null === value || 'undefined' === typeof value) {
         return '';
     }
 

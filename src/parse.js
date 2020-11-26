@@ -19,7 +19,7 @@ function parse_string(string) {
             continue;
         }
         let path = extract_path(decodeURIComponent(key_value[0]));
-        let value = (undefined === key_value[1] || '' === key_value[1]) ? null : decodeURIComponent(key_value[1]);
+        let value = ('undefined' === typeof key_value[1] || '' === key_value[1]) ? null : decodeURIComponent(key_value[1]);
         params = merge(params, create_object(path, value));
     }
 
@@ -40,7 +40,7 @@ export default function parse_query_string(input) {
         return parse_string(input);
     }
 
-    if (undefined === input) {
+    if ('undefined' === typeof input) {
         try {
             return parse_string(window.location.search);
         } catch (e) {
