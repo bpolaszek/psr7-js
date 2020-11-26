@@ -1,6 +1,6 @@
 {
   "name": "psr7-js",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "license": "MIT",
   "author": "Beno!t POLASZEK",
   "description": "URI and Query String immutable manipulation, support for bracket syntax.",
@@ -25,6 +25,7 @@
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "babel-plugin-add-module-exports": "^1.0.4",
     "coveralls": "^3.0.5",
     "jest": "^24.8.0",
     "webpack": "^4.37.0",
