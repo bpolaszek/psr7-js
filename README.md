@@ -1,6 +1,6 @@
 [![Latest Stable Version](https://img.shields.io/npm/v/psr7-js?style=flat-square)](https://www.npmjs.com/package/psr7-js)
 [![License](https://img.shields.io/npm/l/psr7-js?style=flat-square)](https://www.npmjs.com/package/psr7-js)
-[![Build Status](https://img.shields.io/travis/bpolaszek/psr7-js/master.svg?style=flat-square)](https://travis-ci.org/bpolaszek/psr7-js)
+![CI Workflow](https://github.com/bpolaszek/psr7-js/workflows/CI%20Workflow/badge.svg)
 [![Coverage Status](https://img.shields.io/coveralls/github/bpolaszek/psr7-js?style=flat-square)](https://coveralls.io/github/bpolaszek/psr7-js?branch=master)
 [![Total Downloads](https://img.shields.io/npm/dt/psr7-js?style=flat-square)](https://www.npmjs.com/package/psr7-js)
 
