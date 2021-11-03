@@ -14,6 +14,10 @@ test('Booleans in strings are casted', () => {
     expect(cast('off')).toBe(false);
 });
 
+test('Number values with leading 0 in strings are left intact', () => {
+    expect(cast('007')).toBe('007');
+});
+
 test('Other values are left intact', () => {
     expect(cast('foo')).toBe('foo');
     expect(cast(['foo'])).toStrictEqual(['foo']);
