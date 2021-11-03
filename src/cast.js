@@ -7,6 +7,10 @@ export default (value) => {
     }
 
     if (false === isNaN(value)) {
+        if ('string' === typeof value && value.startsWith('0')) {
+            return value;
+        }
+
         return Number.isInteger(value) ? parseInt(value) : parseFloat(value);
     }
 
