@@ -42,7 +42,7 @@ export default function parse_query_string(input) {
 
     if ('undefined' === typeof input) {
         try {
-            return parse_string(window.location.search);
+            return parse_string(window?.location?.search ?? '');
         } catch (e) {
             return {};
         }

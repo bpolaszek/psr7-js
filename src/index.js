@@ -1,4 +1,2 @@
-export const QueryString = require('./query-string').default;
-export const URI = require('./uri').default;
-
-export default URI;
+export { default as URI } from './uri.js';
+export { default as QueryString } from './query-string.js';

@@ -20,7 +20,7 @@ jobs:
             -   name: Install NodeJS
                 uses: actions/setup-node@v1
                 with:
-                    node-version: '12'
+                    node-version: '16'
 
             -   name: Cache dependencies
                 uses: actions/cache@v2
@@ -38,4 +38,4 @@ jobs:
                 run: yarn test
 
             -   name: Upload coverage
-                run: yarn coveralls
+                run: yarn coveralls < ./coverage/lcov.info

@@ -16,24 +16,30 @@
     "php"
   ],
   "repository": "https://github.com/bpolaszek/psr7-js.git",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/psr7-js.umd.js",
+  "module": "./dist/psr7-js.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/psr7-js.es.js",
+      "require": "./dist/psr7-js.umd.js"
+    }
+  },
   "scripts": {
-    "test": "jest",
-    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
-    "build": "webpack --mode=production"
+    "build": "vite build",
+    "test": "vitest run --coverage"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "babel-plugin-add-module-exports": "^1.0.4",
-    "coveralls": "^3.0.5",
-    "jest": "^24.8.0",
-    "webpack": "^4.37.0",
-    "webpack-cli": "^3.3.6"
+    "c8": "^7.11.3",
+    "coveralls": "^3.1.1",
+    "jsdom": "^20.0.0",
+    "path": "^0.12.7",
+    "vite": "^3.0.0",
+    "vitest": "^0.18.1"
   },
   "dependencies": {
-    "babel-loader": "^8.0.6",
     "deepmerge": "^4.0.0"
-  },
-  "main": "./dist/module.js"
+  }
 }
