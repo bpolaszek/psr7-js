@@ -11,7 +11,13 @@ export default (value) => {
             return value;
         }
 
-        return Number.isInteger(value) ? parseInt(value) : parseFloat(value);
+        const number = Number.isInteger(value) ? parseInt(value) : parseFloat(value);
+
+        if ('string' === typeof value && number.toString() !== value) {
+            return value;
+        }
+
+        return number;
     }
 
     if (is_scalar(value) && ['true', 'on'].includes(value.toLowerCase())) {

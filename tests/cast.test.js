@@ -18,6 +18,10 @@ test('Number values with leading 0 in strings are left intact', () => {
     expect(cast('007')).toBe('007');
 });
 
+test('Big number values in strings are left intact', () => {
+    expect(cast('1413121110987654321')).toBe('1413121110987654321');
+});
+
 test('Other values are left intact', () => {
     expect(cast('foo')).toBe('foo');
     expect(cast(['foo'])).toStrictEqual(['foo']);
