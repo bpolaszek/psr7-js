@@ -2,17 +2,16 @@ import { parse_query_string, render_query_string } from "./utils.ts";
 import merge from "deepmerge";
 
 export class QueryString {
-  private readonly params: any;
-
   constructor(queryString: any = {}) {
-    this.params =
+    const params =
       "string" === typeof queryString
         ? parse_query_string(queryString)
         : queryString ?? {};
+    Object.assign(this, params);
   }
 
-  getParams(): object {
-    return this.params;
+  getParams(): any {
+    return Object.fromEntries(Object.entries(this));
   }
 
   hasParam(key: string, ...subKeys: Array<string>): boolean {
@@ -20,7 +19,7 @@ export class QueryString {
   }
 
   getParam(key: string, ...subKeys: Array<string>): any {
-    let value = this.params[key];
+    let value = this.getParams()[key];
     for (const element of subKeys) {
       value = value?.[element];
     }
@@ -36,14 +35,14 @@ export class QueryString {
 
   withParams(params: object, deepMerge = true) {
     if (!deepMerge) {
-      return new QueryString({ ...this.params, ...params });
+      return new QueryString({ ...this.getParams(), ...params });
     }
 
-    return new QueryString(merge(this.params, params));
+    return new QueryString(merge(this.getParams(), params));
   }
 
   withoutParam(key: string, ...subKeys: Array<string | number>): QueryString {
-    const params = { ...this.params };
+    const params = { ...this.getParams() };
     let current = params;
     subKeys = [key, ...subKeys];
     while (subKeys.length > 1) {
@@ -62,10 +61,10 @@ export class QueryString {
   }
 
   toString(): string {
-    return render_query_string(this.params);
+    return render_query_string(this.getParams());
   }
 
   toJSON(): object {
-    return this.params;
+    return this.getParams();
   }
 }
