@@ -1,4 +1,4 @@
-import { uri, URI } from "@/uri.ts";
+import { uri, URI } from "@";
 import { it, expect, describe } from "vitest";
 
 describe("URI", () => {

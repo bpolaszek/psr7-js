@@ -1,5 +1,5 @@
 import { describe, test, it, expect } from "vitest";
-import { query_string, QueryString } from "@/query-string.ts";
+import { query_string, QueryString } from "@";
 
 describe("QueryString", function () {
   it("creates a QueryString object from a string", () => {
