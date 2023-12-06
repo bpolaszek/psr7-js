@@ -1,10 +1,10 @@
 import is_scalar from "./is-scalar";
 
-function append(input, output, separator = '&') {
+function append(input: string, output: string, separator: string = '&') {
     return output.length > 0 ? output + separator + input : output + input;
 }
 
-function stringify(value, param = null, output = '') {
+function stringify(value: any, param: string|null = null, output: string = '') {
 
     if (is_scalar(value)) {
         if (null === param) {
@@ -27,6 +27,7 @@ function stringify(value, param = null, output = '') {
         }
 
         if (isArray) {
+            // @ts-ignore
             output = append(stringify(value[key], encodeURIComponent(param) + '[]'), output);
             continue;
         }

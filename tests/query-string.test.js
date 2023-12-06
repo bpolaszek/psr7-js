@@ -1,4 +1,5 @@
-import QueryString from "../src/query-string";
+import {test, expect} from 'vitest'
+import { QueryString } from "@/query-string.ts";
 
 test('It creates a QueryString object from a string', () => {
     let qs =new QueryString('foo=bar');
@@ -135,5 +136,5 @@ test('It serializes to JSON', () => {
     };
 
     let qs = new QueryString(obj);
-    expect(qs.toJson(undefined, 2)).toStrictEqual(JSON.stringify(obj, undefined, 2));
+    expect(JSON.stringify(qs)).toStrictEqual(JSON.stringify(obj));
 });

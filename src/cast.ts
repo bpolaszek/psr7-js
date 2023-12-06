@@ -1,12 +1,12 @@
 import is_scalar from './is-scalar';
 
-export default (value) => {
+export default (value: any): any => {
 
     if (null === value) {
         return null;
     }
 
-    if (false === isNaN(value)) {
+    if (!isNaN(value)) {
         if ('string' === typeof value && value.startsWith('0')) {
             return value;
         }
