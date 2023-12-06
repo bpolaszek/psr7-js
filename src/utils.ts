@@ -23,6 +23,11 @@ function extract_path(key: string) {
 
 function hydrate(segments: Array<string | null>, value: any, obj: any) {
   const key = segments.shift() as string;
+
+  if (!key.length) {
+    return obj;
+  }
+
   const next = [...segments].shift();
 
   if (undefined === next) {
@@ -120,7 +125,9 @@ function render_query_string_pairs(
 }
 
 export function render_query_string(qs: any, delimiter = "&"): string {
-  return render_query_string_pairs(qs).join(delimiter);
+  let pairs = render_query_string_pairs(qs);
+  //console.log(pairs)
+  return pairs.join(delimiter);
 }
 
 export function die(err: Error): never {

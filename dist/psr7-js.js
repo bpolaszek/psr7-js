@@ -13,14 +13,17 @@ function P(r) {
   });
   return t === "" ? e : [decodeURIComponent(t), ...e];
 }
-function b(r, t, e) {
-  const n = r.shift(), o = [...r].shift();
-  return o === void 0 ? e[n] = t : o === null ? (e[n] = e[n] ?? [], e[n].push(t)) : (e[n] = e[n] ?? {}, e[n] = b(r, t, e[n])), e;
+function p(r, t, e) {
+  const n = r.shift();
+  if (!n.length)
+    return e;
+  const o = [...r].shift();
+  return o === void 0 ? e[n] = t : o === null ? (e[n] = e[n] ?? [], e[n].push(t)) : (e[n] = e[n] ?? {}, e[n] = p(r, t, e[n])), e;
 }
-function* p(r, t = []) {
+function* b(r, t = []) {
   for (const e of Object.keys(r)) {
     const n = r[e];
-    y(n) || n === null ? yield [[...t, e], n] : yield* p(n, [...t, e]);
+    y(n) || n === null ? yield [[...t, e], n] : yield* b(n, [...t, e]);
   }
 }
 function S(r, t = "&") {
@@ -32,7 +35,7 @@ function S(r, t = "&") {
     s === -1 && (s = o.length);
     const f = P(o.substring(0, s));
     let l = s === o.length ? null : o.substring(s + 1);
-    typeof l == "string" && (l = decodeURIComponent(l)), b(f, l, n);
+    typeof l == "string" && (l = decodeURIComponent(l)), p(f, l, n);
   }
   return n;
 }
@@ -48,7 +51,7 @@ function j(r, t = []) {
         )
       );
     else if (typeof n == "object")
-      for (const [o, s] of p(n)) {
+      for (const [o, s] of b(n)) {
         const f = `${e}${o.map((l) => `[${l}]`).join("")}`;
         s === null ? t.push(encodeURIComponent(f)) : t.push(
           `${encodeURIComponent(f)}=${encodeURIComponent(s)}`
