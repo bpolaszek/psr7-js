@@ -45,17 +45,11 @@ function j(r, t = []) {
     if (n === null)
       t.push(`${encodeURIComponent(e)}`);
     else if (Array.isArray(n))
-      t.push(
-        ...n.map(
-          (o) => `${encodeURIComponent(e)}%5B%5D=${encodeURIComponent(o)}`
-        )
-      );
+      t.push(...n.map((o) => `${encodeURIComponent(e)}%5B%5D=${encodeURIComponent(o)}`));
     else if (typeof n == "object")
       for (const [o, s] of b(n)) {
         const f = `${e}${o.map((l) => `[${l}]`).join("")}`;
-        s === null ? t.push(encodeURIComponent(f)) : t.push(
-          `${encodeURIComponent(f)}=${encodeURIComponent(s)}`
-        );
+        s === null ? t.push(encodeURIComponent(f)) : t.push(`${encodeURIComponent(f)}=${encodeURIComponent(s)}`);
       }
     else
       t.push(`${encodeURIComponent(e)}=${encodeURIComponent(n)}`);
@@ -192,9 +186,7 @@ class i {
     try {
       this.url = new URL(t.toString()), this.absolute = !0;
     } catch {
-      this.url = new URL(
-        m + (t.toString().indexOf("/") === 0 ? "" : "/") + t
-      ), this.absolute = !1;
+      this.url = new URL(m + (t.toString().indexOf("/") === 0 ? "" : "/") + t), this.absolute = !1;
     }
   }
   getScheme() {

@@ -22,7 +22,8 @@ export declare class URI {
     getHost(): string;
     getPort(): number | null;
     getPath(): string;
-    getQuery(asObject?: boolean): string | QueryString;
+    getQuery(asObject: true): QueryString;
+    getQuery(asObject?: false): string;
     getFragment(): string;
     toString(): string;
     withScheme(scheme: Stringable): URI;
