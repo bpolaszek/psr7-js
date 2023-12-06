@@ -76,17 +76,17 @@ function U(r) {
 }
 function C(r) {
   var t = Object.prototype.toString.call(r);
-  return t === "[object RegExp]" || t === "[object Date]" || _(r);
+  return t === "[object RegExp]" || t === "[object Date]" || R(r);
 }
-var $ = typeof Symbol == "function" && Symbol.for, R = $ ? Symbol.for("react.element") : 60103;
-function _(r) {
-  return r.$$typeof === R;
+var $ = typeof Symbol == "function" && Symbol.for, _ = $ ? Symbol.for("react.element") : 60103;
+function R(r) {
+  return r.$$typeof === _;
 }
 function x(r) {
   return Array.isArray(r) ? [] : {};
 }
 function a(r, t) {
-  return t.clone !== !1 && t.isMergeableObject(r) ? u(x(r), r, t) : r;
+  return t.clone !== !1 && t.isMergeableObject(r) ? c(x(r), r, t) : r;
 }
 function T(r, t, e) {
   return r.concat(t).map(function(n) {
@@ -95,9 +95,9 @@ function T(r, t, e) {
 }
 function F(r, t) {
   if (!t.customMerge)
-    return u;
+    return c;
   var e = t.customMerge(r);
-  return typeof e == "function" ? e : u;
+  return typeof e == "function" ? e : c;
 }
 function N(r) {
   return Object.getOwnPropertySymbols ? Object.getOwnPropertySymbols(r).filter(function(t) {
@@ -125,21 +125,21 @@ function L(r, t, e) {
     D(r, o) || (d(r, o) && e.isMergeableObject(t[o]) ? n[o] = F(o, e)(r[o], t[o], e) : n[o] = a(t[o], e));
   }), n;
 }
-function u(r, t, e) {
+function c(r, t, e) {
   e = e || {}, e.arrayMerge = e.arrayMerge || T, e.isMergeableObject = e.isMergeableObject || I, e.cloneUnlessOtherwiseSpecified = a;
   var n = Array.isArray(t), o = Array.isArray(r), s = n === o;
   return s ? n ? e.arrayMerge(r, t, e) : L(r, t, e) : a(t, e);
 }
-u.all = function(t, e) {
+c.all = function(t, e) {
   if (!Array.isArray(t))
     throw new Error("first argument should be an array");
   return t.reduce(function(n, o) {
-    return u(n, o, e);
+    return c(n, o, e);
   }, {});
 };
-var v = u, H = v;
+var v = c, H = v;
 const B = /* @__PURE__ */ E(H);
-class c {
+class u {
   constructor(t = {}) {
     const e = typeof t == "string" ? S(t) : t ?? {};
     Object.assign(this, e);
@@ -161,14 +161,14 @@ class c {
     return o[t] = e, this.withParams(o, n);
   }
   withParams(t, e = !0) {
-    return e ? new c(B(this.getParams(), t)) : new c({ ...this.getParams(), ...t });
+    return e ? new u(B(this.getParams(), t)) : new u({ ...this.getParams(), ...t });
   }
   withoutParam(t, ...e) {
     const n = { ...this.getParams() };
     let o = n;
     for (e = [t, ...e]; e.length > 1; )
       o = o == null ? void 0 : o[t], t = e.pop();
-    return Array.isArray(o) ? o.splice(t, 1) : o == null || delete o[t], new c(n);
+    return Array.isArray(o) ? o.splice(t, 1) : o == null || delete o[t], new u(n);
   }
   toString() {
     return A(this.getParams());
@@ -177,7 +177,7 @@ class c {
     return this.getParams();
   }
 }
-const m = "http://localhost";
+const Y = (r = {}) => new u(r), m = "http://localhost";
 function J(r) {
   return typeof r == "string" || typeof r == "object" && (r == null ? void 0 : r.toString()) !== "[object Object]";
 }
@@ -214,7 +214,7 @@ class i {
   }
   getQuery(t = !1) {
     let e = this.url.search.substring(1);
-    return t ? new c(e) : e;
+    return t ? new u(e) : e;
   }
   getFragment() {
     return this.url.hash.substring(1);
@@ -252,7 +252,10 @@ class i {
     return e.url.hash = (t == null ? void 0 : t.toString()) ?? "", e.absolute = this.absolute, e;
   }
 }
+const z = (r = "/") => new i(r);
 export {
-  c as QueryString,
-  i as URI
+  u as QueryString,
+  i as URI,
+  Y as query_string,
+  z as uri
 };

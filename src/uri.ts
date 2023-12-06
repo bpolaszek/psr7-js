@@ -137,3 +137,5 @@ export class URI {
     return clone;
   }
 }
+
+export const uri = (uri: Stringable = "/") => new URI(uri);

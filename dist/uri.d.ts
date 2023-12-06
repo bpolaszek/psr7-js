@@ -22,4 +22,5 @@ export declare class URI {
     withQuery(query: Stringable | null): URI;
     withFragment(fragment: Stringable | null): URI;
 }
+export declare const uri: (uri?: Stringable) => URI;
 export {};

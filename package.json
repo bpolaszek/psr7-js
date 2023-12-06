@@ -29,8 +29,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest --run",
-    "lint": "prettier --check \"src/**\" --ignore-unknown",
-    "format": "prettier -w \"src/**\" --ignore-unknown"
+    "lint": "prettier --check \"(src|tests)/**\" --ignore-unknown",
+    "format": "prettier -w \"(src|tests)/**\" --ignore-unknown"
   },
   "devDependencies": {
     "@types/node": "^20.4.2",

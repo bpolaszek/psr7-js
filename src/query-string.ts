@@ -68,3 +68,6 @@ export class QueryString {
     return this.getParams();
   }
 }
+
+export const query_string = (queryString: any | string = {}) =>
+  new QueryString(queryString);

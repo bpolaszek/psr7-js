@@ -9,3 +9,4 @@ export declare class QueryString {
     toString(): string;
     toJSON(): object;
 }
+export declare const query_string: (queryString?: any | string) => QueryString;
