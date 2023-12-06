@@ -61,6 +61,13 @@ describe('URI', () => {
         expect(new URI('?foo=bar').getQuery()).toBe('foo=bar');
     });
 
+    it('can use query strings as objects', () => {
+        let uri = new URI('http://example.org/?foo=bar');
+        let qs = uri.getQuery(true);
+        expect(qs).toEqual({foo: 'bar'});
+        expect(uri.withQuery(qs.withParam('foo', 'baz')).toString()).toBe('http://example.org/?foo=baz');
+    });
+
     it('returns the proper fragment', () => {
         expect(new URI('http://example.org').getFragment()).toBe('');
         expect(new URI('http://example.org/#foo').getFragment()).toBe('foo');

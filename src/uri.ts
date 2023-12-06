@@ -1,4 +1,5 @@
 import { die } from "./utils.ts";
+import { QueryString } from "./query-string.ts";
 
 type Stringable = string | { toString(): string };
 
@@ -65,8 +66,9 @@ export class URI {
     return this.url.pathname;
   }
 
-  getQuery() {
-    return this.url.search.substring(1);
+  getQuery(asObject: boolean = false) {
+    let qs = this.url.search.substring(1);
+    return asObject ? new QueryString(qs) : qs;
   }
 
   getFragment() {

@@ -1,3 +1,4 @@
+import { QueryString } from "./query-string.ts";
 type Stringable = string | {
     toString(): string;
 };
@@ -10,7 +11,7 @@ export declare class URI {
     getHost(): string;
     getPort(): number | null;
     getPath(): string;
-    getQuery(): string;
+    getQuery(asObject?: boolean): string | QueryString;
     getFragment(): string;
     toString(): string;
     withScheme(scheme: Stringable): URI;
