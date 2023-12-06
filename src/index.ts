@@ -1,2 +1,2 @@
-export * from './uri.ts'
-export * from './query-string.ts'
+export * from "./uri.ts";
+export * from "./query-string.ts";

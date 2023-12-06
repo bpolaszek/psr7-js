@@ -1,56 +1,60 @@
-import { die } from './utils.ts';
+import { die } from "./utils.ts";
 
-type Stringable = string | {toString(): string}
+type Stringable = string | { toString(): string };
 
-const placeholder = 'http://localhost';
+const placeholder = "http://localhost";
 
-function isStringable(value: any) : boolean {
-  return 'string' === typeof value || ('object' === typeof value && '[object Object]' !== value?.toString());
+function isStringable(value: any): boolean {
+  return (
+    "string" === typeof value ||
+    ("object" === typeof value && "[object Object]" !== value?.toString())
+  );
 }
 
 export class URI {
-  private absolute: boolean = false
-  private url: URL
+  private absolute: boolean = false;
+  private url: URL;
 
-  constructor(
-    url: Stringable = '/'
-  ) {
-    isStringable(url) || die(new TypeError('Expected string, got ' + typeof url));
+  constructor(url: Stringable = "/") {
+    isStringable(url) ||
+      die(new TypeError("Expected string, got " + typeof url));
     try {
       this.url = new URL(url.toString());
-      this.absolute = true
+      this.absolute = true;
     } catch (e) {
-      this.url = new URL(placeholder + (0 === url.toString().indexOf('/') ? '' : '/') + url);
+      this.url = new URL(
+        placeholder + (0 === url.toString().indexOf("/") ? "" : "/") + url,
+      );
       this.absolute = false;
     }
   }
 
   getScheme(): string {
-    return !this.absolute ? '' : this.url.protocol.substring(0, this.url.protocol.indexOf(':'));
-
+    return !this.absolute
+      ? ""
+      : this.url.protocol.substring(0, this.url.protocol.indexOf(":"));
   }
 
   getUserInfo() {
     if (!this.absolute) {
-      return '';
+      return "";
     }
 
     if (0 === this.url.username.length && 0 === this.url.password.length) {
-      return '';
+      return "";
     }
 
     let userInfo = this.url.username;
 
     if (0 !== this.url.password.length) {
-      userInfo = userInfo + ':' + this.url.password;
+      userInfo = userInfo + ":" + this.url.password;
     }
 
     return userInfo;
   }
 
   getHost() {
-    return !this.absolute ? '' : this.url.hostname;
-
+    return !this.absolute ? "" : this.url.hostname;
   }
 
   getPort() {
@@ -85,10 +89,10 @@ export class URI {
     return clone;
   }
 
-  withUserInfo(username: Stringable | null, password: Stringable | null = '') {
+  withUserInfo(username: Stringable | null, password: Stringable | null = "") {
     let clone = new URI(this.url.toString());
-    clone.url.username = username?.toString() ?? '';
-    clone.url.password = password?.toString() ?? '';
+    clone.url.username = username?.toString() ?? "";
+    clone.url.password = password?.toString() ?? "";
 
     return clone;
   }
@@ -109,7 +113,7 @@ export class URI {
 
   withPath(path: Stringable | null) {
     let clone = new URI(this.url.toString());
-    clone.url.pathname = path?.toString() ?? '/';
+    clone.url.pathname = path?.toString() ?? "/";
     clone.absolute = this.absolute;
 
     return clone;
@@ -117,7 +121,7 @@ export class URI {
 
   withQuery(query: Stringable | null) {
     let clone = new URI(this.url.toString());
-    clone.url.search = query?.toString() ?? '';
+    clone.url.search = query?.toString() ?? "";
     clone.absolute = this.absolute;
 
     return clone;
@@ -125,10 +129,9 @@ export class URI {
 
   withFragment(fragment: Stringable | null) {
     let clone = new URI(this.url.toString());
-    clone.url.hash = fragment?.toString() ?? '';
+    clone.url.hash = fragment?.toString() ?? "";
     clone.absolute = this.absolute;
 
     return clone;
   }
-
 }
