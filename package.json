@@ -1,7 +1,7 @@
 {
   "name": "psr7-js",
   "type": "module",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "author": "Beno!t POLASZEK",
   "license": "MIT",
   "description": "URI and Query String immutable manipulation, support for bracket syntax.",
