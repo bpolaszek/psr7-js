@@ -5,37 +5,74 @@ on:
         branches: [ master ]
 
     pull_request:
-        branches: [ master ]
 
 jobs:
+
+    code-style:
+
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Install NodeJS
+              uses: actions/setup-node@v3
+
+            - name: Cache dependencies
+              uses: actions/cache@v3
+              with:
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+            - name: Install dependencies
+              run: yarn install
+
+            - name: Check code style
+              run: yarn lint
 
     tests:
 
         runs-on: ubuntu-latest
 
         steps:
-            -   name: Checkout
-                uses: actions/checkout@v2
+            - name: Checkout
+              uses: actions/checkout@v3
 
-            -   name: Install NodeJS
-                uses: actions/setup-node@v1
-                with:
-                    node-version: '12'
+            - name: Install NodeJS
+              uses: actions/setup-node@v3
 
-            -   name: Cache dependencies
-                uses: actions/cache@v2
-                with:
-                    path: '**/node_modules'
-                    key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+            - name: Cache dependencies
+              uses: actions/cache@v3
+              with:
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
-            -   name: Install dependencies
-                run: yarn install
+            - name: Install dependencies
+              run: yarn install
 
-            -   name: Build
-                run: yarn build
+            - name: Check code style
+              run: yarn test
 
-            -   name: Run unit tests
-                run: yarn test
+    build:
 
-            -   name: Upload coverage
-                run: yarn coveralls
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Install NodeJS
+              uses: actions/setup-node@v3
+
+            - name: Cache dependencies
+              uses: actions/cache@v3
+              with:
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+            - name: Install dependencies
+              run: yarn install
+
+            - name: Check code style
+              run: yarn build

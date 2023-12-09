@@ -59,12 +59,6 @@ console.log(qs.toString()); // foo=bar&foos[]=foo&foos[]=bar&sort[updated_at]=de
 
 Inspired by [bentools/querystring](https://github.com/bpolaszek/querystring).
 
-## Additionnal notes
-
-This library is intended to be used with a bundler like Webpack. 
-
-If you prefer, you can still have `URI` and `QueryString` registered in your global scope (which is not adviced) by using `dist/uri.min.js` and `dist/query-string.min.js` into `<script>` tags.
-
 ## Tests
 
 ```bash
